@@ -21,6 +21,6 @@ import BoxShadow from "/src/components/BoxShadow.vue";
 let shownComponent = BoxShadow;
 
 const showComponent = component => {
-    showComponent = component;
+    shownComponent = component;
 };
 </script>
