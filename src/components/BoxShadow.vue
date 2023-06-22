@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="row-span-1 grid grid-cols-2 gap-x-20">
+        <div class="row-span-1 grid grid-cols-2 items-center gap-x-20">
             <div class="flex items-center justify-between">
                 <div class="flex flex-col items-center">
                     <label for="color">Color</label>
@@ -42,15 +42,12 @@
                     <input type="checkbox" name="inset" id="inset" v-model="inset" class="text-4xl" />
                 </div>
             </div>
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-5">
-                    <textarea name="result" id="result" cols="50" rows="1" :value="result" class="resize-none" readonly></textarea>
-                    <button @click="copy(result)" class="text-4xl">
-                        <Icon v-if="copied" icon="lucide:copy-check" />
-                        <Icon v-else icon="lucide:copy" />
-                    </button>
+            <div class="flex w-full flex-col gap-5">
+                <ResultBox :result="result" />
+                <div class="flex gap-5">
+                    <CopyButton @click="copy(result)" :copied="copied" />
+                    <ResetButton @click="reset" />
                 </div>
-                <button @click="reset">Reset</button>
             </div>
         </div>
     </div>
@@ -59,9 +56,8 @@
 <script setup>
 import { watch, computed } from "vue";
 import { useStyleTag, useStorage, useClipboard } from "@vueuse/core";
-import { Icon } from "@iconify/vue";
 
-import ExampleBox from "./ui/ExampleBox.vue";
+import CopyButton from "./ui/CopyButton.vue";
 
 const hOffset = useStorage("box-shadow-hoffset", 10);
 const vOffset = useStorage("box-shadow-voffset", 10);
