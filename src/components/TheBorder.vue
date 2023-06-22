@@ -1,6 +1,6 @@
 <template>
     <div class="row-span-3 flex items-center justify-center">
-        <ExampleBox property="bordo-box" class="h-40 w-40" />
+        <ExampleBox property="bordo-box" class="h-1/2 w-1/6" />
     </div>
 
     <div class="row-span-3 grid grid-rows-2 divide-y">

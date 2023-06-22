@@ -9,6 +9,7 @@ import ResultBox from "./components/ui/ResultBox.vue";
 import ColorInput from "./components/ui/ColorInput.vue";
 import RangeInput from "./components/ui/RangeInput.vue";
 import SelectInput from "./components/ui/SelectInput.vue";
+import DarkButton from "./components/ui/DarkButton.vue";
 
 const app = createApp(App);
 
@@ -19,5 +20,6 @@ app.component("ResultBox", ResultBox);
 app.component("ColorInput", ColorInput);
 app.component("RangeInput", RangeInput);
 app.component("SelectInput", SelectInput);
+app.component("DarkButton", DarkButton);
 
 app.mount("#app");

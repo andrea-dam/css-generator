@@ -1,6 +1,6 @@
 <template>
     <div class="row-span-3 flex items-center justify-center">
-        <ExampleBox property="box-shadow" class="h-32 w-32" />
+        <ExampleBox property="box-shadow" class="h-1/2 w-1/6" />
     </div>
     <div class="row-span-3 grid grid-rows-2 divide-y">
         <div class="row-span-1 grid grid-cols-2 gap-x-10">
@@ -27,7 +27,7 @@
                     <input type="checkbox" name="inset" id="inset" v-model="inset" class="h-10 w-10 rounded" />
                 </div>
             </div>
-            <ResultBox :result="result" @reset="reset" @copy="copy(result)" />
+            <ResultBox :result="result" @reset="reset" @copy="copy(result)" :copied="copied" />
         </div>
     </div>
 </template>

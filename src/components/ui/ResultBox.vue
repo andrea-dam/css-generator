@@ -6,7 +6,7 @@
             cols="50"
             rows="1"
             :value="result"
-            class="w-full resize-none rounded border border-inherit bg-neutral-50 px-5 py-2 shadow-inner focus:border-blue-600 focus:shadow-lg"
+            class="w-full resize-none rounded border border-inherit bg-neutral-50 px-5 py-2 shadow-inner focus:border-blue-600 focus:shadow-lg dark:border-neutral-800 dark:bg-neutral-600 dark:text-white"
             readonly></textarea>
         <div class="flex gap-5">
             <CopyButton @click="$emit('copy')" :copied="copied" />

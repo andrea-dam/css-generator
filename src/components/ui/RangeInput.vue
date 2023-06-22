@@ -1,5 +1,6 @@
 <template>
-    <div class="flex h-fit items-center justify-between rounded border bg-neutral-50 px-2 py-1 shadow-inner">
+    <div
+        class="flex h-fit items-center justify-between rounded border bg-neutral-50 px-2 py-1 shadow-inner dark:border-neutral-800 dark:bg-neutral-600 dark:text-white">
         <label :for="parameter"><slot></slot></label>
         <div class="flex flex-col items-center">
             <span>{{ parameter }}</span>
