@@ -10,17 +10,12 @@
 
             <!-- style -->
             <div class="col-span-2 flex flex-col items-center justify-center">
-                <label for="style">Style</label>
-                <select name="style" id="style" v-model="style" class="rounded border border-neutral-500 p-1">
-                    <option value="solid">Solid</option>
-                    <option value="dotted">Dotted</option>
-                    <option value="dashed">Dashed</option>
-                    <option value="double">Double</option>
-                    <option value="groove">Groove</option>
-                    <option value="ridge">Ridge</option>
-                    <option value="inset">Inset</option>
-                    <option value="outset">Outset</option>
-                </select>
+                <SelectInput
+                    :parameter="style"
+                    :options="['solid', 'dotted', 'dashed', 'groove', 'ridge', 'inset', 'outset']"
+                    @update-value="newValue => (style = newValue)">
+                    Style
+                </SelectInput>
             </div>
 
             <!-- color -->

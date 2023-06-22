@@ -2,7 +2,10 @@
     <!-- Barra Laterale -->
     <aside class="relative col-span-2 flex flex-col items-center bg-slate-400">
         <!-- Titolo -->
-        <h1 class="absolute top-5 text-3xl text-white drop-shadow-lg">CSS Generator</h1>
+        <div class="absolute top-5 text-center text-white drop-shadow-xl">
+            <h1 class="text-3xl">CSS Generator</h1>
+            <h2 class="text-md italic">made by Andrea Damiani</h2>
+        </div>
 
         <!-- Pulsanti Sezioni -->
         <ul class="flex h-full w-full flex-col justify-center gap-5">
