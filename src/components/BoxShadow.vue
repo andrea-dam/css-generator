@@ -42,13 +42,7 @@
                     <input type="checkbox" name="inset" id="inset" v-model="inset" class="text-4xl" />
                 </div>
             </div>
-            <div class="flex w-full flex-col gap-5">
-                <ResultBox :result="result" />
-                <div class="flex gap-5">
-                    <CopyButton @click="copy(result)" :copied="copied" />
-                    <ResetButton @click="reset" />
-                </div>
-            </div>
+            <ResultBox :result="result" @reset="reset" @copy="copy(result)" />
         </div>
     </div>
 </template>
@@ -56,8 +50,6 @@
 <script setup>
 import { watch, computed } from "vue";
 import { useStyleTag, useStorage, useClipboard } from "@vueuse/core";
-
-import CopyButton from "./ui/CopyButton.vue";
 
 const hOffset = useStorage("box-shadow-hoffset", 10);
 const vOffset = useStorage("box-shadow-voffset", 10);

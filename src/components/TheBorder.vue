@@ -1,17 +1,16 @@
 <template>
-    <ExampleBox property="border" />
+    <ExampleBox property="bordo-box" />
     <div class="row-span-3 grid grid-rows-2 divide-y">
         <div class="grid grid-cols-3 gap-5">
             <div class="flex items-center justify-between">
                 <label for="width">Width</label>
                 <div class="flex flex-col items-center">
-                    <span>{{ width }}</span>
+                    <span>{{ width }}px</span>
                     <input type="range" name="width" id="width" v-model="width" max="32" />
                 </div>
             </div>
-            <div class="flex items-center justify-between">
-                <select name="style" id="style" v-model="style">
-                    <!-- dotted|dashed|solid|double|groove|ridge|inset|outset -->
+            <div class="flex items-center justify-center">
+                <select name="style" id="style" v-model="style" class="rounded border border-neutral-500 p-1">
                     <option value="solid">Solid</option>
                     <option value="dotted">Dotted</option>
                     <option value="dashed">Dashed</option>
@@ -27,10 +26,7 @@
                 <input type="color" name="color" id="color" v-model="color" />
             </div>
         </div>
-        <div>
-            <ResultBox :result="result" />
-            <ResetButton @click="reset" />
-        </div>
+        <ResultBox :result="result" @reset="reset" @copy="copy(result)" />
     </div>
 </template>
 
@@ -42,12 +38,12 @@ const width = useStorage("border-width", 10);
 const style = useStorage("border-style", "solid");
 const color = useStorage("border-color", "#000000");
 
-const { css } = useStyleTag(`.border { border: ${width.value}px ${style.value} ${color.value}}`, {
-    id: "border",
+const { css } = useStyleTag(`.bordo-box { border: ${width.value}px ${style.value} ${color.value}}`, {
+    id: "bordo-box",
 });
 
 watch([width, style, color], ([newWidth, newStyle, newColor]) => {
-    css.value = `.border { border: ${newWidth}px ${newStyle} ${newColor}; }`;
+    css.value = `.bordo-box { border: ${newWidth}px ${newStyle} ${newColor}; }`;
 });
 
 const result = computed(() => {

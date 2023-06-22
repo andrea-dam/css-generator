@@ -1,6 +1,7 @@
 <template>
-    <aside class="col-span-2 bg-slate-400">
-        <ul class="flex h-full flex-col justify-center gap-5">
+    <aside class="relative col-span-2 flex flex-col items-center bg-slate-400">
+        <h1 class="absolute top-5 text-3xl text-white drop-shadow-lg">CSS Generator</h1>
+        <ul class="flex h-full w-full flex-col justify-center gap-5">
             <li class="group">
                 <button
                     @click="component = 'box-shadow'"
@@ -21,7 +22,7 @@
     </aside>
 
     <main class="col-span-10 flex items-center justify-center bg-neutral-50 p-12">
-        <div class="bordo grid h-full w-full grid-rows-6 rounded bg-white px-12 pb-6 shadow-inner">
+        <div class="grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner">
             <Component :is="shownComponent" />
         </div>
     </main>
@@ -43,9 +44,3 @@ const shownComponent = computed(() => {
     }
 });
 </script>
-
-<style>
-.bordo {
-    @apply border;
-}
-</style>
