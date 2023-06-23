@@ -1,21 +1,19 @@
 <template>
     <div
-        class="flex h-fit items-center justify-between rounded border bg-neutral-50 px-2 py-1 shadow-inner dark:border-neutral-800 dark:bg-neutral-600 dark:text-white">
-        <label :for="parameter"><slot></slot></label>
-        <div class="flex flex-col items-center">
-            <span>{{ parameter }}</span>
-            <input
-                type="range"
-                class="w-64"
-                :name="parameter"
-                :id="parameter"
-                :value="parameter"
-                :min="min"
-                :max="max"
-                @dblclick="parameter = 0"
-                @input="$emit('update-value', input.value)"
-                ref="input" />
-        </div>
+        class="grid grid-cols-12 items-center justify-between rounded border bg-neutral-50 px-5 py-1 shadow-inner dark:border-neutral-800 dark:bg-neutral-600 dark:text-white">
+        <label class="col-span-4" :for="parameter"><slot></slot></label>
+        <span class="col-span-2">{{ parameter }}</span>
+        <input
+            type="range"
+            class="col-span-6"
+            :name="parameter"
+            :id="parameter"
+            :value="parameter"
+            :min="min"
+            :max="max"
+            @dblclick="parameter = 0"
+            @input="$emit('update-value', input.value)"
+            ref="input" />
     </div>
 </template>
 

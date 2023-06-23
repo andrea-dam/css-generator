@@ -3,7 +3,7 @@
         <ExampleBox property="box-shadow" class="h-1/2 w-1/6" />
     </div>
     <div class="row-span-3 grid grid-rows-2 divide-y">
-        <div class="row-span-1 grid grid-cols-2 gap-x-10">
+        <div class="row-span-1 grid grid-cols-2 items-center gap-x-10">
             <!-- h-offset -->
             <RangeInput :parameter="hOffset" min="-100" max="100" @update-value="newValue => (hOffset = newValue)">H-Offset</RangeInput>
 
@@ -23,7 +23,7 @@
 
                 <!-- inset -->
                 <div class="flex items-center gap-5">
-                    <label for="inset" class="text-lg">Inset</label>
+                    <label for="inset" class="text-lg dark:text-white">Inset</label>
                     <input type="checkbox" name="inset" id="inset" v-model="inset" class="h-10 w-10 rounded" />
                 </div>
             </div>
@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import { watch, computed } from "vue";
-import { useStyleTag, useStorage, useClipboard } from "@vueuse/core";
+import { watch } from "vue";
+import { useStyleTag, useStorage, useClipboard, computedEager } from "@vueuse/core";
 
 const hOffset = useStorage("box-shadow-hoffset", 10);
 const vOffset = useStorage("box-shadow-voffset", 10);
@@ -58,7 +58,7 @@ watch([hOffset, vOffset, blur, spread, color, inset], ([newH, newV, newBlur, new
     }
 });
 
-const result = computed(() => {
+const result = computedEager(() => {
     return inset.value
         ? `box-shadow: ${hOffset.value}px ${vOffset.value}px ${blur.value}px ${spread.value}px ${color.value} inset;`
         : `box-shadow: ${hOffset.value}px ${vOffset.value}px ${blur.value}px ${spread.value}px ${color.value};`;

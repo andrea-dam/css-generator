@@ -4,12 +4,12 @@
     </div>
 
     <div class="row-span-3 grid grid-rows-2 divide-y">
-        <div class="grid grid-cols-12 items-center">
+        <div class="grid grid-cols-12 items-center gap-10">
             <!-- width -->
             <RangeInput class="col-span-5" :parameter="width" max="32" @update-value="newValue => (width = newValue)">Width</RangeInput>
 
             <!-- style -->
-            <div class="col-span-2 flex flex-col items-center justify-center">
+            <div class="col-span-3 flex justify-between">
                 <SelectInput
                     :parameter="style"
                     :options="['solid', 'dotted', 'dashed', 'groove', 'ridge', 'inset', 'outset']"
@@ -19,7 +19,7 @@
             </div>
 
             <!-- color -->
-            <ColorInput class="col-span-5" :color="color" @update-color="newColor => (color = newColor)" classes="w-64" />
+            <ColorInput class="col-span-4" :color="color" @update-color="newColor => (color = newColor)" classes="w-64 h-8" />
         </div>
         <ResultBox :result="result" @reset="reset" @copy="copy(result)" :copied="copied" />
     </div>

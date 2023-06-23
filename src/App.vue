@@ -1,6 +1,6 @@
 <template>
     <!-- Barra Laterale -->
-    <aside class="relative col-span-2 flex flex-col items-center bg-slate-400 dark:bg-neutral-950">
+    <aside class="relative col-span-2 flex flex-col items-center bg-neutral-500 dark:bg-neutral-950">
         <!-- Titolo -->
         <div class="absolute top-5 text-center text-white drop-shadow-xl">
             <h1 class="text-3xl">CSS Generator</h1>

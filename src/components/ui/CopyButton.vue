@@ -13,5 +13,6 @@
 
 <script setup>
 import BaseButton from "./BaseButton.vue";
+
 defineProps({ copied: Boolean });
 </script>

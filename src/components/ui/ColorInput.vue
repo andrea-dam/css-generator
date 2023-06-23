@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center justify-center">
+    <div class="flex items-center justify-center gap-5 dark:text-white">
         <label for="color">Color</label>
         <input
             type="color"
