@@ -5,6 +5,7 @@
             :name="parameter"
             :id="parameter"
             :value="parameter"
+            :disabled="isDisabled"
             class="w-32 rounded border border-inherit bg-neutral-50 p-1 shadow dark:border-neutral-800 dark:bg-neutral-600 dark:text-white"
             @input="$emit('update-value', input.value)"
             ref="input">
@@ -16,7 +17,7 @@
 <script setup>
 import { ref } from "vue";
 
-defineProps({ parameter: String, options: Array });
+defineProps({ parameter: String, options: Array, isDisabled: Boolean });
 defineEmits(["update-value"]);
 
 const input = ref();

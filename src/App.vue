@@ -9,17 +9,23 @@
 
         <!-- Pulsanti Sezioni -->
         <ul class="flex h-full w-full flex-col justify-center gap-5">
-            <SidebarButton @click="component = 'box-shadow'" :isComponent="component === 'box-shadow'">Box Shadow</SidebarButton>
+            <SidebarButton @click="component = 'box-shadow'" :isComponent="component === 'box-shadow'"
+                >Box Shadow</SidebarButton
+            >
 
             <SidebarButton @click="component = 'border'" :isComponent="component === 'border'">Border</SidebarButton>
 
-            <SidebarButton @click="component = 'background'" :isComponent="component === 'background'">Background</SidebarButton>
+            <SidebarButton @click="component = 'background'" :isComponent="component === 'background'"
+                >Background</SidebarButton
+            >
 
-            <SidebarButton @click="component = 'animation'" :isComponent="component === 'animation'">Animation</SidebarButton>
+            <SidebarButton @click="component = 'animation'" :isComponent="component === 'animation'"
+                >Animation</SidebarButton
+            >
         </ul>
     </aside>
 
-    <main class="col-span-10 flex items-center justify-center bg-neutral-50 p-12 dark:bg-neutral-900">
+    <main class="col-span-10 flex items-center justify-center bg-neutral-50 dark:bg-neutral-900 xl:p-6 2xl:p-12">
         <div
             class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
             <DarkButton />

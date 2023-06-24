@@ -11,6 +11,7 @@
             :value="parameter"
             :min="min"
             :max="max"
+            :disabled="isDisabled"
             @dblclick="parameter = 0"
             @input="$emit('update-value', input.value)"
             ref="input" />
@@ -20,7 +21,7 @@
 <script setup>
 import { ref } from "vue";
 
-defineProps({ parameter: Number, min: String, max: String });
+defineProps({ parameter: Number, min: String, max: String, isDisabled: Boolean });
 defineEmits(["update-value"]);
 
 const input = ref();
