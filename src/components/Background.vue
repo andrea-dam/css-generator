@@ -14,7 +14,7 @@
 
                 <SelectInput
                     :parameter="bgPosition"
-                    :options="['center', 'top-left', 'top', 'top-right', 'right', 'bottom-right', 'bottom', 'bottom-left', 'left']"
+                    :options="['center', 'top', 'right', 'bottom', 'left']"
                     @update-value="newValue => (bgPosition = newValue)">
                     Background Position
                 </SelectInput>
@@ -72,8 +72,6 @@ const { css } = useStyleTag(
         id: "box-background",
     }
 );
-
-console.log(bgColor.value);
 
 const isTransparent = useStorage("color-transparent", true);
 const toggleTransparency = useToggle(isTransparent);

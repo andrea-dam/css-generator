@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-neutral-500" :class="property"></div>
+    <div class="bg-neutral-500 dark:bg-neutral-400" :class="property"></div>
 </template>
 
 <script setup>
