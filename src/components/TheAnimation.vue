@@ -94,11 +94,15 @@ const runAnimation = () => {
         `;
 
     setTimeout(() => {
-        setTimeout(() => {
-            isRunning.value = false;
+        isRunning.value = false;
+        if (fillMode.value === "none") {
             css.value = ``;
-        }, duration.value * count.value);
-    }, delay.value);
+        } else {
+            css.value = `.animation {
+                ${delay.value}ms ${count.value} ${direction.value} ${fillMode.value};
+            }`;
+        }
+    }, duration.value * count.value + delay.value);
 };
 
 const { copy, copied } = useClipboard();

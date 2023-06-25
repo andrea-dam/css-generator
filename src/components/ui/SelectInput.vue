@@ -1,12 +1,12 @@
 <template>
-    <div class="flex w-full items-center justify-between">
+    <div class="grid w-full grid-cols-2 items-center justify-between">
         <label :for="parameter" class="dark:text-white"><slot></slot></label>
         <select
             :name="parameter"
             :id="parameter"
             :value="parameter"
             :disabled="isDisabled"
-            class="w-32 rounded border border-inherit bg-neutral-50 p-1 shadow dark:border-neutral-800 dark:bg-neutral-600 dark:text-white"
+            class="rounded border border-inherit bg-neutral-50 p-1 shadow dark:border-neutral-800 dark:bg-neutral-600 dark:text-white"
             @input="$emit('update-value', input.value)"
             ref="input">
             <option v-for="(option, index) in options" :key="index" :value="option">{{ option }}</option>

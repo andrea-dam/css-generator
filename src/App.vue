@@ -1,6 +1,6 @@
 <template>
     <!-- Barra Laterale -->
-    <aside class="relative col-span-2 flex flex-col items-center bg-blue-600 dark:bg-neutral-950">
+    <aside class="relative col-span-2 flex flex-col items-center bg-blue-600 dark:bg-red-950">
         <!-- Titolo -->
         <div class="absolute top-5 text-center text-white drop-shadow-xl">
             <h1 class="text-3xl">CSS Generator</h1>
@@ -25,7 +25,7 @@
         </ul>
     </aside>
 
-    <main class="col-span-10 flex items-center justify-center bg-neutral-50 dark:bg-neutral-900 xl:p-6 2xl:p-12">
+    <main class="col-span-10 flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 xl:p-6 2xl:p-12">
         <div
             class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
             <DarkButton />
