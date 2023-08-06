@@ -17,13 +17,13 @@
 
             <!-- Pulsanti Sezioni -->
             <ul class="flex h-full w-full flex-col justify-center gap-5">
-                <SidebarButton @click="component = 'box-shadow'" :is-component="component === 'box-shadow'">Box Shadow</SidebarButton>
+                <SidebarButton @click="component = 'box-shadow'" :is-active="component === 'box-shadow'">Box Shadow</SidebarButton>
 
-                <SidebarButton @click="component = 'border'" :is-component="component === 'border'">Border</SidebarButton>
+                <SidebarButton @click="component = 'border'" :is-active="component === 'border'">Border</SidebarButton>
 
-                <SidebarButton @click="component = 'background'" :is-component="component === 'background'">Background</SidebarButton>
+                <SidebarButton @click="component = 'background'" :is-active="component === 'background'">Background</SidebarButton>
 
-                <SidebarButton @click="component = 'animation'" :is-component="component === 'animation'">Animation</SidebarButton>
+                <SidebarButton @click="component = 'animation'" :is-active="component === 'animation'">Animation</SidebarButton>
             </ul>
         </aside>
 

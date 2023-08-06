@@ -9,9 +9,9 @@
 <script setup>
 import { computedEager } from "@vueuse/core";
 
-const props = defineProps({ isComponent: Boolean });
+const props = defineProps({ isActive: Boolean });
 
 const customClass = computedEager(() => {
-    return props.isComponent ? "bg-neutral-200/70 text-black" : "text-white";
+    return props.isActive ? "bg-neutral-200/70 text-black" : "text-white";
 });
 </script>
