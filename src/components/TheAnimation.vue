@@ -1,43 +1,41 @@
 <template>
-    <div class="relative row-span-3 flex items-center">
-        <ExampleBox property="animation" class="absolute h-1/2 w-1/6" />
-    </div>
-    <button
-        @click="runAnimation"
-        class="absolute right-10 top-28 flex items-center justify-center rounded-full border bg-neutral-50 p-2 text-3xl shadow dark:bg-neutral-800 dark:text-white dark:shadow-none"
-        :disabled="isRunning">
-        <Icon v-if="!isRunning" icon="clarity:play-solid" class="text-green-600" />
-        <Icon v-else icon="icomoon-free:spinner3" class="animate-spin" />
-    </button>
-    <div class="row-span-3 grid grid-rows-2 divide-y dark:text-white">
-        <div class="grid grid-cols-2 gap-5">
-            <div class="flex flex-col justify-around">
-                <RangeInput
-                    :parameter="duration"
-                    min="500"
-                    max="3000"
-                    @update-value="newValue => (duration = newValue)"
-                    :is-disabled="isRunning">
-                    Duration (ms)
-                </RangeInput>
+    <div
+            class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
+        <div class="relative row-span-3 flex items-center">
+            <ExampleBox property="animation" class="absolute h-1/2 w-1/6" />
+        </div>
+        <button
+            @click="runAnimation"
+            class="absolute right-10 top-28 flex items-center justify-center rounded-full border bg-neutral-50 p-2 text-3xl shadow dark:bg-neutral-800 dark:text-white dark:shadow-none"
+            :disabled="isRunning">
+            <Icon v-if="!isRunning" icon="clarity:play-solid" class="text-green-600" />
+            <Icon v-else icon="icomoon-free:spinner3" class="animate-spin" />
+        </button>
+        <div class="row-span-3 grid grid-rows-2 divide-y dark:text-white">
+            <div class="grid grid-cols-2 gap-5">
+                <div class="flex flex-col justify-around">
+                    <RangeInput
+                        :parameter="duration"
+                        min="500"
+                        max="3000"
+                        @update-value="newValue => (duration = newValue)"
+                        :is-disabled="isRunning">
+                        Duration (ms)
+                    </RangeInput>
 
-                <RangeInput
-                    :parameter="delay"
-                    min="0"
-                    max="5000"
-                    @update-value="newValue => (delay = newValue)"
-                    :is-disabled="isRunning">
-                    Delay (ms)
-                </RangeInput>
+                    <RangeInput
+                        :parameter="delay"
+                        min="0"
+                        max="5000"
+                        @update-value="newValue => (delay = newValue)"
+                        :is-disabled="isRunning">
+                        Delay (ms)
+                    </RangeInput>
 
-                <RangeInput
-                    :parameter="count"
-                    min="1"
-                    max="5"
-                    @update-value="newValue => (count = newValue)"
-                    :is-disabled="isRunning">
-                    Iteration Count
-                </RangeInput>
+                    <RangeInput :parameter="count" min="1" max="5" @update-value="newValue => (count = newValue)" :is-disabled="isRunning">
+                        Iteration Count
+                    </RangeInput>
+                </div>
             </div>
             <div class="flex flex-col justify-around">
                 <SelectInput
@@ -71,7 +69,7 @@
 
 <script setup>
 import { computed, ref } from "vue";
-import { useStyleTag, useStorage, useClipboard, useToggle } from "@vueuse/core";
+import { useStyleTag, useStorage, useClipboard } from "@vueuse/core";
 
 const duration = useStorage("animation-duration", 1000);
 const animFunction = useStorage("animation-function", "ease-in");

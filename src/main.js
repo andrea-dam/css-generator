@@ -10,14 +10,13 @@ import ColorInput from "./components/ui/ColorInput.vue";
 import RangeInput from "./components/ui/RangeInput.vue";
 import SelectInput from "./components/ui/SelectInput.vue";
 
-const app = createApp(App);
+createApp(App)
+    .component("Icon", Icon)
 
-app.component("Icon", Icon);
+    .component("ExampleBox", ExampleBox)
+    .component("ResultBox", ResultBox)
+    .component("ColorInput", ColorInput)
+    .component("RangeInput", RangeInput)
+    .component("SelectInput", SelectInput)
 
-app.component("ExampleBox", ExampleBox);
-app.component("ResultBox", ResultBox);
-app.component("ColorInput", ColorInput);
-app.component("RangeInput", RangeInput);
-app.component("SelectInput", SelectInput);
-
-app.mount("#app");
+    .mount("#app");

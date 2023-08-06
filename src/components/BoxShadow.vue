@@ -1,33 +1,36 @@
 <template>
-    <div class="row-span-3 flex items-center justify-center">
-        <ExampleBox property="box-shadow" class="h-1/2 w-1/6" />
-    </div>
-    <div class="row-span-3 grid grid-rows-2 divide-y">
-        <div class="row-span-1 grid grid-cols-2 items-center gap-x-10">
-            <!-- h-offset -->
-            <RangeInput :parameter="hOffset" min="-100" max="100" @update-value="newValue => (hOffset = newValue)">H-Offset</RangeInput>
-
-            <!-- v-offset -->
-            <RangeInput :parameter="vOffset" min="-50" max="50" @update-value="newValue => (vOffset = newValue)">V-Offset</RangeInput>
-
-            <!-- blur -->
-            <RangeInput :parameter="blur" min="0" max="50" @update-value="newValue => (blur = newValue)">Blur</RangeInput>
-
-            <!-- Spread -->
-            <RangeInput :parameter="spread" min="-50" max="50" @update-value="newValue => (spread = newValue)">Spread</RangeInput>
+    <div
+            class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
+        <div class="row-span-3 flex items-center justify-center">
+            <ExampleBox property="box-shadow" class="h-1/2 w-1/6" />
         </div>
-        <div class="row-span-1 grid grid-cols-2 items-center gap-x-10">
-            <div class="flex items-center justify-around">
-                <!-- color -->
-                <ColorInput :color="color" @update-color="newColor => (color = newColor)" classes="w-64 h-12" />
+        <div class="row-span-3 grid grid-rows-2 divide-y">
+            <div class="row-span-1 grid grid-cols-2 items-center gap-x-10">
+                <!-- h-offset -->
+                <RangeInput :parameter="hOffset" min="-100" max="100" @update-value="newValue => (hOffset = newValue)">H-Offset</RangeInput>
 
-                <!-- inset -->
-                <div class="flex items-center gap-5">
-                    <label for="inset" class="text-lg dark:text-white">Inset</label>
-                    <input type="checkbox" name="inset" id="inset" v-model="inset" class="h-10 w-10 rounded" />
-                </div>
+                <!-- v-offset -->
+                <RangeInput :parameter="vOffset" min="-50" max="50" @update-value="newValue => (vOffset = newValue)">V-Offset</RangeInput>
+
+                <!-- blur -->
+                <RangeInput :parameter="blur" min="0" max="50" @update-value="newValue => (blur = newValue)">Blur</RangeInput>
+
+                <!-- Spread -->
+                <RangeInput :parameter="spread" min="-50" max="50" @update-value="newValue => (spread = newValue)">Spread</RangeInput>
             </div>
-            <ResultBox :result="result" @reset="reset" @copy="copy(result)" :copied="copied" />
+            <div class="row-span-1 grid grid-cols-2 items-center gap-x-10">
+                <div class="flex items-center justify-around">
+                    <!-- color -->
+                    <ColorInput :color="color" @update-color="newColor => (color = newColor)" classes="w-64 h-12" />
+
+                    <!-- inset -->
+                    <div class="flex items-center gap-5">
+                        <label for="inset" class="text-lg dark:text-white">Inset</label>
+                        <input type="checkbox" name="inset" id="inset" v-model="inset" class="h-10 w-10 rounded" />
+                    </div>
+                </div>
+                <ResultBox :result="result" @reset="reset" @copy="copy(result)" :copied="copied" />
+            </div>
         </div>
     </div>
 </template>
