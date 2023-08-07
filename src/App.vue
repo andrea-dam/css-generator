@@ -1,5 +1,5 @@
 <template>
-    <template class="flex h-screen w-screen flex-col items-center justify-center gap-5 bg-slate-900 p-5 text-slate-50 xl:hidden">
+    <template class="flex h-[100dvh] w-screen flex-col items-center justify-center gap-5 bg-slate-900 p-5 text-slate-50 xl:hidden">
         <h1 class="text-center text-5xl">Tailwind Colors</h1>
         <h2 class="text-2xl italic">by Andrea Damiani</h2>
         <Icon icon="mdi:smartphone-off" class="text-9xl" />
