@@ -11,7 +11,7 @@
             <Icon v-else :icon="spinner3Icon" class="animate-spin" />
         </button>
 
-        <div class="row-span-3 grid grid-rows-2 divide-y gap-4 dark:text-white">
+        <div class="row-span-3 grid grid-rows-2 divide-y gap-5 dark:text-white">
             <div class="grid grid-cols-2 gap-4">
                 <RangeInput
                     @dblclick="duration = 1000"
