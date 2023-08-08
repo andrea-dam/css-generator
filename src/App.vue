@@ -11,7 +11,7 @@
         <aside class="relative col-span-2 flex flex-col items-center bg-blue-600 dark:bg-red-950">
             <!-- Titolo -->
             <div class="absolute top-5 text-center text-white drop-shadow-xl">
-                <h1 class="text-3xl">CSS Generator</h1>
+                <h1 class="xl:text-2xl 2xl:text-3xl">CSS Generator</h1>
                 <h2 class="text-md italic">by Andrea Damiani</h2>
             </div>
 
@@ -27,6 +27,7 @@
             </ul>
         </aside>
 
+        <!-- Schermata Principale -->
         <main class="col-span-10 flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 xl:p-6 2xl:p-12">
             <DarkButton />
 
