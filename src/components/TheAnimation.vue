@@ -7,68 +7,69 @@
             @click="runAnimation"
             class="absolute right-10 top-28 flex items-center justify-center rounded-full border bg-neutral-50 p-2 text-3xl shadow dark:bg-neutral-800 dark:text-white dark:shadow-none"
             :disabled="isRunning">
-            <Icon v-if="!isRunning" icon="clarity:play-solid" class="text-green-600" />
-            <Icon v-else icon="icomoon-free:spinner3" class="animate-spin" />
+            <Icon v-if="!isRunning" :icon="playSolid" class="text-green-600" />
+            <Icon v-else :icon="spinner3Icon" class="animate-spin" />
         </button>
-        <div class="row-span-3 grid grid-rows-2 divide-y dark:text-white">
-            <div class="grid grid-cols-2 gap-5">
-                <div class="flex flex-col justify-around">
-                    <RangeInput
-                        :parameter="duration"
-                        min="500"
-                        max="3000"
-                        @update-value="newValue => (duration = newValue)"
-                        :is-disabled="isRunning">
-                        Duration (ms)
-                    </RangeInput>
 
-                    <RangeInput
-                        :parameter="delay"
-                        min="0"
-                        max="5000"
-                        @update-value="newValue => (delay = newValue)"
-                        :is-disabled="isRunning">
-                        Delay (ms)
-                    </RangeInput>
-
-                    <RangeInput :parameter="count" min="1" max="5" @update-value="newValue => (count = newValue)" :is-disabled="isRunning">
-                        Iteration Count
-                    </RangeInput>
-                </div>
-            </div>
-            <div class="flex flex-col justify-around">
-                <SelectInput
-                    :parameter="animFunction"
-                    :options="['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']"
-                    @update-value="newValue => (animFunction = newValue)"
+        <div class="row-span-3 grid grid-rows-2 divide-y gap-4 dark:text-white">
+            <div class="grid grid-cols-2 gap-4">
+                <RangeInput
+                    @dblclick="duration = 1000"
+                    v-model="duration"
+                    parameter="duration"
+                    min="500"
+                    max="3000"
                     :is-disabled="isRunning">
-                    Timing Function
-                </SelectInput>
+                    Duration (ms)
+                </RangeInput>
 
                 <SelectInput
-                    :parameter="direction"
+                    :key="direction"
+                    v-model="direction"
+                    parameter="direction"
                     :options="['normal', 'reverse', 'alternate', 'alternate-reverse']"
-                    @update-value="newValue => (direction = newValue)"
                     :is-disabled="isRunning">
                     Direction
                 </SelectInput>
 
+                <RangeInput @dblclick="count = 1" v-model="count" parameter="count" min="1" max="5" :is-disabled="isRunning">
+                    Iteration Count
+                </RangeInput>
+
                 <SelectInput
-                    :parameter="fillMode"
+                    :key="animFunction"
+                    v-model="animFunction"
+                    parameter="animation-function"
+                    :options="['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']"
+                    :is-disabled="isRunning">
+                    Timing Function
+                </SelectInput>
+
+                <RangeInput @dblclick="delay = 0" v-model="delay" parameter="delay" min="0" max="5000" :is-disabled="isRunning">
+                    Delay (ms)
+                </RangeInput>
+
+                <SelectInput
+                    :key="fillMode"
+                    v-model="fillMode"
+                    parameter="fill-mode"
                     :options="['none', 'forwards', 'backwards', 'both']"
-                    @update-value="newValue => (fillMode = newValue)"
                     :is-disabled="isRunning">
                     Fill Mode
                 </SelectInput>
             </div>
+
+            <ResultBox :result="result" @reset="reset" @copy="copy(result)" :copied="copied" />
         </div>
-        <ResultBox :result="result" @reset="reset" @copy="copy(result)" :copied="copied" />
     </div>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
 import { useStyleTag, useStorage, useClipboard } from "@vueuse/core";
+import { Icon } from "@iconify/vue";
+import playSolid from "@iconify-icons/clarity/play-solid";
+import spinner3Icon from "@iconify-icons/icomoon-free/spinner3";
 
 const duration = useStorage("animation-duration", 1000);
 const animFunction = useStorage("animation-function", "ease-in");

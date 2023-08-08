@@ -14,6 +14,8 @@
         "vue": "^3.2.45"
     },
     "devDependencies": {
+        "@iconify-icons/clarity": "^1.2.8",
+        "@iconify-icons/icomoon-free": "^1.2.3",
         "@iconify-icons/line-md": "^1.2.23",
         "@iconify-icons/lucide": "^1.2.114",
         "@iconify-icons/mdi": "^1.2.47",
