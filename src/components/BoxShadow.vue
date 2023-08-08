@@ -1,27 +1,27 @@
 <template>
-    <div
-            class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
+    <div class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
         <div class="row-span-3 flex items-center justify-center">
-            <ExampleBox property="box-shadow" class="h-1/2 w-1/6" />
+            <div class="box-shadow h-1/2 w-1/6 bg-neutral-500 dark:bg-neutral-400" />
         </div>
         <div class="row-span-3 grid grid-rows-2 divide-y">
             <div class="row-span-1 grid grid-cols-2 items-center gap-x-10">
                 <!-- h-offset -->
-                <RangeInput :parameter="hOffset" min="-100" max="100" @update-value="newValue => (hOffset = newValue)">H-Offset</RangeInput>
+                <RangeInput @dblclick="hOffset = 0" v-model="hOffset" parameter="hOffset" min="-100" max="100">H-Offset</RangeInput>
 
                 <!-- v-offset -->
-                <RangeInput :parameter="vOffset" min="-50" max="50" @update-value="newValue => (vOffset = newValue)">V-Offset</RangeInput>
+                <RangeInput @dblclick="vOffset = 0" v-model="vOffset" parameter="vOffset" min="-50" max="50">V-Offset</RangeInput>
 
                 <!-- blur -->
-                <RangeInput :parameter="blur" min="0" max="50" @update-value="newValue => (blur = newValue)">Blur</RangeInput>
+                <RangeInput @dblclick="blur = 0" v-model="blur" parameter="blur" min="0" max="50">Blur</RangeInput>
 
                 <!-- Spread -->
-                <RangeInput :parameter="spread" min="-50" max="50" @update-value="newValue => (spread = newValue)">Spread</RangeInput>
+                <RangeInput @dblclick="spread = 0" v-model="spread" parameter="spread" min="-50" max="50">Spread</RangeInput>
             </div>
+
             <div class="row-span-1 grid grid-cols-2 items-center gap-x-10">
                 <div class="flex items-center justify-around">
                     <!-- color -->
-                    <ColorInput :color="color" @update-color="newColor => (color = newColor)" classes="w-64 h-12" />
+                    <ColorInput v-model="color" classes="w-64 h-12" />
 
                     <!-- inset -->
                     <div class="flex items-center gap-5">
@@ -54,11 +54,9 @@ const { css } = useStyleTag(
 );
 
 watch([hOffset, vOffset, blur, spread, color, inset], ([newH, newV, newBlur, newSpread, newColor, newInset]) => {
-    if (newInset) {
-        css.value = `.box-shadow { box-shadow: ${newH}px ${newV}px ${newBlur}px ${newSpread}px ${newColor} inset; }`;
-    } else {
-        css.value = `.box-shadow { box-shadow: ${newH}px ${newV}px ${newBlur}px ${newSpread}px ${newColor}; }`;
-    }
+    css.value = newInset
+        ? `.box-shadow { box-shadow: ${newH}px ${newV}px ${newBlur}px ${newSpread}px ${newColor} inset; }`
+        : `.box-shadow { box-shadow: ${newH}px ${newV}px ${newBlur}px ${newSpread}px ${newColor}; }`;
 });
 
 const result = computedEager(() => {

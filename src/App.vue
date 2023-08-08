@@ -2,7 +2,7 @@
     <template class="flex h-[100dvh] w-screen flex-col items-center justify-center gap-5 bg-slate-900 p-5 text-slate-50 xl:hidden">
         <h1 class="text-center text-5xl">Tailwind Colors</h1>
         <h2 class="text-2xl italic">by Andrea Damiani</h2>
-        <Icon icon="mdi:smartphone-off" class="text-9xl" />
+        <Icon :icon="smartphoneOff" class="text-9xl" />
         <h2 class="text-center text-3xl">This App is only available on large screens.</h2>
     </template>
 
@@ -30,21 +30,21 @@
         <main class="col-span-10 flex items-center justify-center bg-neutral-50 dark:bg-neutral-800 xl:p-6 2xl:p-12">
             <DarkButton />
 
-            <KeepAlive>
-                <ShownComponent />
-            </KeepAlive>
+            <ShownComponent />
         </main>
     </template>
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent } from "vue";
+import { computed } from "vue";
 import { useStorage } from "@vueuse/core";
+import { Icon } from '@iconify/vue';
+import smartphoneOff from '@iconify-icons/mdi/smartphone-off';
 
-const BoxShadow = defineAsyncComponent(() => import("/src/components/BoxShadow.vue"));
-const TheBorder = defineAsyncComponent(() => import("./components/TheBorder.vue"));
-const Background = defineAsyncComponent(() => import("./components/Background.vue"));
-const TheAnimation = defineAsyncComponent(() => import("./components/TheAnimation.vue"));
+import BoxShadow from "/src/components/BoxShadow.vue";
+import TheBorder from "./components/TheBorder.vue";
+import Background from "./components/Background.vue";
+import TheAnimation from "./components/TheAnimation.vue";
 
 import SidebarButton from "./components/ui/SidebarButton.vue";
 import DarkButton from "./components/ui/DarkButton.vue";
@@ -52,14 +52,15 @@ import DarkButton from "./components/ui/DarkButton.vue";
 const component = useStorage("shown-component", "box-shadow");
 
 const ShownComponent = computed(() => {
-    if (component.value === "box-shadow") {
-        return BoxShadow;
-    } else if (component.value === "border") {
-        return TheBorder;
-    } else if (component.value === "background") {
-        return Background;
-    } else if (component.value === "animation") {
-        return TheAnimation;
+    switch (component.value) {
+        case "box-shadow":
+            return BoxShadow;
+        case "border":
+            return TheBorder;
+        case "background":
+            return Background;
+        case "animation":
+            return TheAnimation;
     }
 });
 </script>

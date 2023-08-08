@@ -1,8 +1,7 @@
 <template>
-    <div
-            class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
+    <div class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
         <div class="relative row-span-3 flex items-center">
-            <ExampleBox property="animation" class="absolute h-1/2 w-1/6" />
+            <div class="animation absolute h-1/2 w-1/6 bg-neutral-500 dark:bg-neutral-400" />
         </div>
         <button
             @click="runAnimation"

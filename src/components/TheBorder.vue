@@ -1,27 +1,27 @@
 <template>
-    <div
-            class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
+    <div class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
         <div class="row-span-3 flex items-center justify-center">
-            <ExampleBox property="bordo-box" class="h-1/2 w-1/6" />
+            <div class="bordo-box h-1/2 w-1/6 bg-neutral-500 dark:bg-neutral-400" />
         </div>
 
         <div class="row-span-3 grid grid-rows-2 divide-y">
             <div class="grid grid-cols-12 items-center gap-10">
                 <!-- width -->
-                <RangeInput class="col-span-5" :parameter="width" max="32" @update-value="newValue => (width = newValue)">Width</RangeInput>
+                <RangeInput v-model="width" class="col-span-5" parameter="width" max="32">Width</RangeInput>
 
                 <!-- style -->
                 <div class="col-span-3 flex justify-between">
                     <SelectInput
-                        :parameter="style"
-                        :options="['solid', 'dotted', 'dashed', 'groove', 'ridge', 'inset', 'outset']"
-                        @update-value="newValue => (style = newValue)">
+                        :key="style"
+                        v-model="style"
+                        parameter="style"
+                        :options="['solid', 'dotted', 'dashed', 'groove', 'ridge', 'inset', 'outset']">
                         Style
                     </SelectInput>
                 </div>
 
                 <!-- color -->
-                <ColorInput class="col-span-4" :color="color" @update-color="newColor => (color = newColor)" classes="w-64 h-8" />
+                <ColorInput class="col-span-4" v-model="color" classes="w-64 h-8" />
             </div>
             <ResultBox :result="result" @reset="reset" @copy="copy(result)" :copied="copied" />
         </div>

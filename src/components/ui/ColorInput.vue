@@ -5,18 +5,13 @@
             type="color"
             name="color"
             id="color"
-            :value="color"
-            @input="$emit('update-color', input.value)"
-            :class="classes"
-            ref="input" />
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
+            :class="classes" />
     </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-
-defineProps({ color: String, classes: String });
-defineEmits(["update-color"]);
-
-const input = ref();
+defineProps({ modelValue: String, classes: String });
+defineEmits(["update:modelValue"]);
 </script>

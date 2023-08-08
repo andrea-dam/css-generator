@@ -2,27 +2,21 @@
     <div
         class="grid grid-cols-12 items-center justify-between rounded border bg-neutral-50 px-5 py-1 shadow-inner dark:border-neutral-800 dark:bg-neutral-600 dark:text-white">
         <label class="col-span-4" :for="parameter"><slot></slot></label>
-        <span class="col-span-2">{{ parameter }}</span>
+        <span class="col-span-2">{{ modelValue }}</span>
         <input
             type="range"
             class="col-span-6"
             :name="parameter"
             :id="parameter"
-            :value="parameter"
+            :value="modelValue"
             :min="min"
             :max="max"
             :disabled="isDisabled"
-            @dblclick="parameter = 0"
-            @input="$emit('update-value', input.value)"
-            ref="input" />
+            @input="$emit('update:modelValue', $event.target.value)" />
     </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-
-defineProps({ parameter: Number, min: String, max: String, isDisabled: Boolean });
-defineEmits(["update-value"]);
-
-const input = ref();
+defineProps({ parameter: String, min: String, max: String, isDisabled: Boolean, modelValue: Number });
+defineEmits(["update:modelValue"]);
 </script>

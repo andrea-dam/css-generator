@@ -14,7 +14,10 @@
         "vue": "^3.2.45"
     },
     "devDependencies": {
-        "@iconify/vue": "^4.1.0",
+        "@iconify-icons/line-md": "^1.2.23",
+        "@iconify-icons/lucide": "^1.2.114",
+        "@iconify-icons/mdi": "^1.2.47",
+        "@iconify/vue": "^4.1.1",
         "@vitejs/plugin-vue": "^4.0.0",
         "autoprefixer": "^10.4.13",
         "postcss": "^8.4.21",

@@ -1,39 +1,38 @@
 <template>
-    <div
-            class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
+    <div class="relative grid h-full w-full grid-rows-6 rounded border bg-white px-12 shadow-inner dark:border-none dark:bg-neutral-700">
         <div class="row-span-3 flex items-center justify-center">
-            <ExampleBox property="box-background" class="h-64 w-96 border" />
+            <div class="box-background h-64 w-96 border" />
         </div>
         <div class="row-span-3 grid grid-rows-2 divide-y">
             <div class="grid grid-cols-3 items-center justify-between gap-8">
                 <div class="flex flex-col gap-5">
                     <SelectInput
-                        :parameter="bgAttachment"
-                        :options="['scroll', 'fixed', 'local']"
-                        @update-value="newValue => (bgAttachment = newValue)">
+                        :key="bgAttachment"
+                        v-model="bgAttachment"
+                        parameter="bg-ttachment"
+                        :options="['scroll', 'fixed', 'local']">
                         Background Attachment
                     </SelectInput>
 
                     <SelectInput
-                        :parameter="bgPosition"
-                        :options="['center', 'top', 'right', 'bottom', 'left']"
-                        @update-value="newValue => (bgPosition = newValue)">
+                        :key="bgPosition"
+                        v-model="bgPosition"
+                        parameter="bg-position"
+                        :options="['center', 'top', 'right', 'bottom', 'left']">
                         Background Position
                     </SelectInput>
                 </div>
 
                 <div class="flex flex-col gap-5">
-                    <SelectInput
-                        :parameter="bgSize"
-                        :options="['cover', 'contain', 'auto', '50%']"
-                        @update-value="newValue => (bgSize = newValue)">
+                    <SelectInput :key="bgSize" v-model="bgSize" parameter="bg-size" :options="['cover', 'contain', 'auto', '50%']">
                         Background Size
                     </SelectInput>
 
                     <SelectInput
-                        :parameter="bgRepeat"
-                        :options="['repeat-x', 'repeat-y', 'repeat', 'space', 'round', 'no-repeat']"
-                        @update-value="newValue => (bgRepeat = newValue)">
+                        :key="bgRepeat"
+                        v-model="bgRepeat"
+                        parameter="bg-repeat"
+                        :options="['repeat-x', 'repeat-y', 'repeat', 'space', 'round', 'no-repeat']">
                         Background Repeat
                     </SelectInput>
                 </div>
@@ -41,13 +40,9 @@
                 <div class="flex justify-between">
                     <div class="flex items-center gap-2">
                         <label for="transparent" class="dark:text-white">Trasparent</label>
-                        <input type="checkbox" name="transparent" id="transparent" :checked="isTransparent" @input="toggleTransparency()" />
+                        <input type="checkbox" name="transparent" id="transparent" v-model="isTransparent" :checked="isTransparent" />
                     </div>
-                    <ColorInput
-                        v-if="!isTransparent"
-                        :color="bgColor"
-                        @update-color="newColor => (bgColor = newColor)"
-                        classes="w-32 h-12" />
+                    <ColorInput v-if="!isTransparent" v-model="bgColor" classes="w-32 h-12" />
                 </div>
             </div>
 
@@ -58,7 +53,7 @@
 
 <script setup>
 import { watch } from "vue";
-import { useStyleTag, useStorage, useClipboard, computedEager, useToggle } from "@vueuse/core";
+import { useStyleTag, useStorage, useClipboard, computedEager } from "@vueuse/core";
 
 const bgAttachment = useStorage("bg-attachment", "scroll");
 const bgColor = useStorage("bg-color", "transparent");
@@ -81,7 +76,6 @@ const { css } = useStyleTag(
 );
 
 const isTransparent = useStorage("color-transparent", true);
-const toggleTransparency = useToggle(isTransparent);
 
 watch(
     [bgColor, bgPosition, bgSize, bgRepeat, bgAttachment, isTransparent],

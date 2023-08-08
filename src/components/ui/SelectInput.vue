@@ -4,11 +4,10 @@
         <select
             :name="parameter"
             :id="parameter"
-            :value="parameter"
+            v-model="selection"
             :disabled="isDisabled"
             class="rounded border border-inherit bg-neutral-50 p-1 shadow dark:border-neutral-800 dark:bg-neutral-600 dark:text-white"
-            @input="$emit('update-value', input.value)"
-            ref="input">
+            @change="$emit('update:modelValue', selection)">
             <option v-for="(option, index) in options" :key="index" :value="option">{{ option }}</option>
         </select>
     </div>
@@ -17,8 +16,8 @@
 <script setup>
 import { ref } from "vue";
 
-defineProps({ parameter: String, options: Array, isDisabled: Boolean });
-defineEmits(["update-value"]);
+const props = defineProps({ modelValue: String, parameter: String, options: Array, isDisabled: Boolean });
+defineEmits(["update:modelValue"]);
 
-const input = ref();
+const selection = ref(props.modelValue);
 </script>
