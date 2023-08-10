@@ -1,12 +1,14 @@
 <template>
-    <template class="flex h-[100dvh] w-screen flex-col items-center justify-center gap-5 bg-slate-900 p-5 text-slate-50 xl:hidden">
-        <h1 class="text-center text-5xl">Tailwind Colors</h1>
+    <div
+        v-if="onMobile"
+        class="flex h-[100dvh] w-screen flex-col items-center justify-center gap-5 bg-slate-900 p-5 text-slate-50">
+        <h1 class="text-center text-5xl">CSS Generator</h1>
         <h2 class="text-2xl italic">by Andrea Damiani</h2>
         <Icon :icon="smartphoneOff" class="text-9xl" />
         <h2 class="text-center text-3xl">This App is only available on large screens.</h2>
-    </template>
+    </div>
 
-    <template class="hidden select-none xl:grid xl:h-screen xl:grid-cols-12">
+    <div v-else class="select-none grid h-screen grid-cols-12">
         <!-- Barra Laterale -->
         <aside class="relative col-span-2 flex flex-col items-center bg-blue-600 dark:bg-red-950">
             <!-- Titolo -->
@@ -33,14 +35,14 @@
 
             <ShownComponent />
         </main>
-    </template>
+    </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
-import { useStorage } from "@vueuse/core";
-import { Icon } from '@iconify/vue';
-import smartphoneOff from '@iconify-icons/mdi/smartphone-off';
+import { useStorage, breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+import { Icon } from "@iconify/vue";
+import smartphoneOff from "@iconify-icons/mdi/smartphone-off";
 
 import BoxShadow from "/src/components/BoxShadow.vue";
 import TheBorder from "./components/TheBorder.vue";
@@ -64,4 +66,7 @@ const ShownComponent = computed(() => {
             return TheAnimation;
     }
 });
+
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const onMobile = breakpoints.smaller("xl");
 </script>
